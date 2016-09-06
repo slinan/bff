@@ -1,0 +1,51 @@
+<div class="modal-header">
+	<button type="button" ng-click="ctrl.cerrar()" class="close"
+		aria-hidden="true">&times;</button>
+	<h4 class="modal-title">Usuario</h4>
+</div>
+<div class="modal-body">
+		<form name="form">
+			<div class="col-md-12">
+				<errors id="errors" error="ctrl.error"></errors>
+			</div>
+			
+            <div class="form-group">
+				<label for="singleSelect"> Tipo de Usuario: </label><br>
+                    <select class="form-control" name="singleSelect" ng-model="ctrl.usuario.tipoUsuario">
+                        <option value="F">Funcionario</option>
+                        <option value="U">Usuario</option>
+                        <option value="A" >Administrador</option>
+                    </select> 
+            </div>               
+
+            <div class="form-group"
+				ng-class="{ 'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && form.nombre.$dirty}">
+				<input class="form-control" placeholder="Nombre*"
+					ng-model="ctrl.usuario.nombre" name="nombre"
+					required>
+			</div>
+            <div class="form-group"
+				ng-class="{ 'has-success': form.fechaNacimiento.$valid && form.fechaNacimiento.$dirty, 'has-error': form.fechaNacimiento.$invalid && form.fechaNacimiento.$dirty}">
+				<input class="form-control" placeholder="Fecha de Nacimiento*"
+					ng-model="ctrl.usuario.fechaNacimiento" name="fechaNacimiento" type="date"
+					required>
+			</div>
+            <div class="form-group"
+				ng-class="{ 'has-success': form.email.$valid && form.email.$dirty, 'has-error': form.email.$invalid && form.email.$dirty}">
+				<input class="form-control" placeholder="Email*"
+					ng-model="ctrl.usuario.email" name="email" type="email"
+					required>
+			</div>
+            <div class="form-group"
+				ng-class="{ 'has-success': form.password.$valid && form.password.$dirty, 'has-error': form.password.$invalid && form.password.$dirty}">
+				<input class="form-control" placeholder="Password*"
+					ng-model="ctrl.usuario.password" name="password" type="password"
+					required>
+			</div>
+			<button type="button" class="btn btn-success"
+				ng-click="ctrl.guardar(form.$valid, form.$error)">Guardar
+			</button>
+		</form>
+		</br>
+	</div>
+</div>

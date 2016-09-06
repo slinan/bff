@@ -1,0 +1,25 @@
+<ul class="nav navbar-nav navbar-right" ng-hide="ctrl.autenticado()">
+	<div style="padding: 20px;">
+		<button type="button" class="btn btn-success navbar-btn" ng-click="ctrl.irALogin()">
+	    	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Iniciar Sesi&#243n
+		</button>
+	</div>
+</ul>
+
+<div style="padding-right: 20px;" class="btn-group" ng-show="ctrl.autenticado()">
+
+</div>
+<ul class="nav navbar-nav navbar-right" ng-show="ctrl.autenticado()">
+	<div class="btn-group usuario" >
+  		<button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    		Opciones <span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu">
+    		<li ng-show="ctrl.esAdmin()" ng-click="ctrl.irATiposBici()"><a>Tipos Bicicleta</a></li>
+    		<li ng-show="ctrl.esAdmin()" ng-click="ctrl.irATiposMulta()"><a>Tipos Multa</a></li>
+    		<li ng-show="ctrl.esAdmin()" ng-click="ctrl.irAPuntosPrestamo()"><a>Puntos Préstamo</a></li>
+        <li ng-show="ctrl.esAdmin()" ng-click="ctrl.irAUsuarios()"><a>Usuarios</a></li>
+        <li ng-click="ctrl.logout()"><a>Log Out</a></li>
+  		</ul>		
+	</div>
+</ul>

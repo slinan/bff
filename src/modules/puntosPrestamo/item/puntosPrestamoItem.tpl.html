@@ -1,0 +1,33 @@
+<div class="modal-header">
+	<button type="button" ng-click="ctrl.cerrar()" class="close"
+		aria-hidden="true">&times;</button>
+	<h4 class="modal-title">Punto de Prestamo</h4>
+</div>
+<div class="modal-body">
+		<form name="form">
+			<div class="col-md-12">
+				<errors id="errors" error="ctrl.error"></errors>
+			</div>
+			<div class="form-group"
+				ng-class="{ 'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && form.nombre.$dirty}">
+				<input class="form-control" placeholder="Nombre*"
+					ng-model="ctrl.puntoPrestamo.nombre" name="nombre"
+					required>
+			</div>
+			<div class="form-group"
+				ng-class="{ 'has-success': form.direccion.$valid && form.direccion.$dirty, 'has-error': form.direccion.$invalid && form.direccion.$dirty}">
+				<input class="form-control" placeholder="Direccion*"
+					ng-model="ctrl.puntoPrestamo.direccion" name="direccion"
+					required>
+			</div>
+			<div class="form-group" ng-show="!!ctrl.puntoPrestamo.tiposBicis">
+				<h4> Bicicletas disponibles por tipo:</h4>
+				<p ng-repeat="(key, value) in ctrl.puntoPrestamo.tiposBicis">{{key}}: {{value}}</p>
+			</div>
+			<button type="button" class="btn btn-success"
+				ng-click="ctrl.guardar(form.$valid, form.$error)">Guardar
+			</button>
+		</form>
+		</br>
+	</div>
+</div>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" style="height: 98%;">
+<head>
+<title>bikes4free</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap-cosmo.css" rel="stylesheet" type="text/css" />
+<link href="css/bikes4free.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-mocks.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-route.min.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-cookies.min.js"></script>
+<script
+	src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/restangular/1.4.0/restangular.min.js"></script>
+
+<script src="js/ui-bootstrap-0.13.4.min.js"></script>
+<script src="js/ui-bootstrap-tpls-0.13.4.min.js"></script>
+<script src="js/ngcrud.min.js"></script>
+
+<script src="src/app.js"></script>
+
+<script src="src/modules/auth/auth.mod.js"></script>
+<script src="src/modules/auth/auth.svc.js"></script>
+<script src="src/modules/auth/auth.ctrl.js"></script>
+<script src="src/modules/auth/auth.dir.js"></script>
+
+<script src="src/modules/cookies/cookies.mod.js"></script>
+<script src="src/modules/cookies/cookies.svc.js"></script>
+
+<script src="src/modules/errors/errors.mod.js"></script>
+<script src="src/modules/errors/errors.dir.js"></script>
+    
+<script src="src/modules/multas/multas.mod.js"></script>
+<script src="src/modules/multas/multas.svc.js"></script>
+<script src="src/modules/multas/multas.ctrl.js"></script>
+<script src="src/modules/multas/item/multasItem.ctrl.js"></script>
+
+<script src="src/modules/redireccion/redireccion.mod.js"></script>
+<script src="src/modules/redireccion/redireccion.svc.js"></script>
+<script src="src/modules/redireccion/redireccion.ctrl.js"></script>
+
+<script src="src/modules/registro/registro.mod.js"></script>
+<script src="src/modules/registro/registro.svc.js"></script>
+<script src="src/modules/registro/registro.ctrl.js"></script>
+
+<script src="src/modules/tiposbici/tiposBici.mod.js"></script>
+<script src="src/modules/tiposbici/tiposBici.svc.js"></script>
+<script src="src/modules/tiposbici/tiposBici.ctrl.js"></script>
+<script src="src/modules/tiposbici/item/tiposBiciItem.ctrl.js"></script>
+    
+<script src="src/modules/usuarios/usuarios.mod.js"></script>
+<script src="src/modules/usuarios/usuarios.svc.js"></script>
+<script src="src/modules/usuarios/usuarios.ctrl.js"></script>
+<script src="src/modules/usuarios/item/usuariosItem.ctrl.js"></script>
+
+<script src="src/modules/puntosPrestamo/puntosPrestamo.mod.js"></script>
+<script src="src/modules/puntosPrestamo/puntosPrestamo.svc.js"></script>
+<script src="src/modules/puntosPrestamo/puntosPrestamo.ctrl.js"></script>
+<script src="src/modules/puntosPrestamo/item/puntosPrestamoItem.ctrl.js"></script>
+
+</head>
+<body style="padding-top: 60px;">
+	<div class="wrapper">
+		<div class="container-fluid">
+			<div class="col-md-12">
+				<nav class="navbar-default navbar-fixed-top" role="navigation">
+					<div>
+						<a style="padding: 10px;" href="#/home" class="pull-left"><img
+							src="imgs/bikes4free.png" width=209 height=73></a>
+					</div>
+					<div class="container-fluid">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button style="padding-top: 35px;" type="button"
+								class="navbar-toggle collapsed" data-toggle="collapse"
+								data-target="#main-bar">
+								<span class="sr-only">Toggle navigation</span> 
+								<span class="icon-bar"></span> 
+								<span class="icon-bar"></span> 
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="main-bar">
+							<auth-bar></auth-bar>
+						</div>
+						<!-- /.navbar-collapse -->
+					</div>
+					<!-- /.container-fluid -->
+				</nav>
+			</div>
+			<div ng-view></div>
+		</div>
+		<div class="push">
+			<!--//-->
+		</div>
+	</div>
+	<!-- .wrapper -->
+
+	<footer>
+		<div class="container">
+			<p class="text-muted">
+				</br>
+					Universidad de los Andes
+				</br>
+					Programación con Tecnologías Web
+				</br>
+				</br>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>

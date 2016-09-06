@@ -1,0 +1,316 @@
+.btn-success {
+	background-color: #38761F;
+	border-color: #38761F;
+}
+
+.btn-default {
+	background-color: #783F04;
+	border-color: #783F04;
+}
+
+.navbar-default {
+  background-color: #d9d9d9;
+  border-color: #d9d9d9;
+}
+
+footer {
+	color: #666;
+	background:  #d9d9d9;
+	padding: 3px 0 0 0;
+}
+
+footer a {
+	color: #999;
+}
+
+footer a:hover {
+	color: #efefef;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -95px;
+}
+
+.push {
+	height: 95px;
+}
+
+.wrapper>.container {
+	padding-top: 3px;
+}
+
+@media ( max-width : 767px) {
+	body {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	footer, .wrapper {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+.box-grid {
+	padding: 0;
+	list-style: none;
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+
+.big-message {
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	margin-top: 160px;
+}
+
+.bikes-form {
+	margin-top: 50px;
+	margin-bottom: 10px; 
+	margin-left:5px;
+}
+
+.bikes-form .title {
+	font-size: 2em;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+
+/* ------------------------------------- */
+
+.box-grid li {
+	width: 20em;
+	height: 20em;
+	display: inline-block;
+	margin: 1em;
+	text-align: center;
+}
+
+#boxGrid {
+	margin-top: 50px;
+}
+
+.box-item {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: #da0038;
+}
+
+.box-title {
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	color: white;
+	letter-spacing: 2px;
+	text-align: center;
+	padding-top: 37%;
+}
+
+.box-description {
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	color: white;
+	letter-spacing: 2px;
+	text-align: center;
+	padding-top: 52%;
+}
+
+.btn-box {
+	padding-top: 80%;
+}
+
+.box-img {
+	position: absolute;
+	padding-top: 10%;
+	padding-left: 100px;
+}
+
+.circular {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+}
+
+.usuario {
+	color: white;
+	letter-spacing: 2px;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 23px;
+	padding-left: 20px;
+}
+
+.dropdown-submenu {
+	position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+	top: 0;
+	left: 100%;
+	margin-top: -6px;
+	margin-left: -1px;
+	-webkit-border-radius: 0 6px 6px 6px;
+	-moz-border-radius: 0 6px 6px;
+	border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+	display: block;
+}
+
+.dropdown-submenu>a:after {
+	display: block;
+	content: " ";
+	float: right;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 5px 0 5px 5px;
+	border-left-color: #ccc;
+	margin-top: 5px;
+	margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+	border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+	float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+	left: -100%;
+	margin-left: 10px;
+	-webkit-border-radius: 6px 0 6px 6px;
+	-moz-border-radius: 6px 0 6px 6px;
+	border-radius: 6px 0 6px 6px;
+}
+
+.marketplace-login-form {
+	margin-top: 100px;
+}
+
+.form-label {
+	margin-top: 4px;
+}
+
+.checkbox-label {
+	margin-right: 5px;
+}
+
+.checkbox-grid {
+	text-align: center;
+	padding-left: 5px;
+	width: 100%;
+}
+
+.checkbox-grid li {
+	text-align: center;
+	width: 15em;
+	display: inline-block;
+	margin: 1em;
+}
+
+.checkbox-alligned-group{
+	margin-top: 20px;
+}
+
+.checkbox-marketplace{
+	list-style-type: none;
+	margin-left: 30%;
+	margin-bottom: 15px;
+}
+
+.sorry-message {
+	text-align: center;
+	height: 100%;
+	margin-top: 160px;
+}
+
+.package-grid {
+	padding: 0;
+	list-style: none;
+	display: block;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+
+.package-grid li {
+	width: 18em;
+	height: 37em;
+	display: inline-block;
+	text-align: center;
+	margin: 1px;
+}
+
+#packageGrid {
+	margin-top: 40px;
+}
+
+.package-item-red {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: #da0038;
+	color: white;
+}
+
+.package-item-grey {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: #dddddd;
+	color: black;
+}
+
+.package-margins {
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+.package-title {
+	letter-spacing: 2px;
+	text-align: center;
+	padding-top: 18%;
+}
+
+.package-description {
+	letter-spacing: 2px;
+	text-align: center;
+	padding-top: 10%;
+}
+
+.btn-package {
+	position: absolute;
+	bottom: 30px;
+	padding-left: 31%;
+}
+
+.nombre-empresa {
+	font-size: 1em;
+}
+
+.mensaje-error {
+	color: red;
+	margin: 15px;
+}
+
+.modal-dialog {
+	width: 85%;
+}
