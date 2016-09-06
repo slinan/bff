@@ -5,12 +5,13 @@
                                    		function (svc, redirect, authSvc, cookiesSvc, urls, dateFilter) {
                 
         this.crearUsuario = function(valid) {
-        	if(true) {
+        	if(valid && !this.contraseniasNoCoinciden()) {
                 this.usuario.tipoUsuario = "U"
                 this.usuario.fechaNacimiento = dateFilter(this.usuario.fechaNacimiento, 'yyyy-MM-dd'); 
-        		svc.registrarUsuario(this.usuario).then(
+        		svc.registrarUsuario(this.usuario)
+                    .success(
         				function(data) {
-        			        this.errorUsuario = {status: false};
+        			        this.error = {status: false};
         					if(!data.error) {
         						var dataCookie = {
             						id: data.id,
@@ -19,7 +20,7 @@
                                 cookiesSvc.crearCookieDeAutorizacion(dataCookie);
                 				redirect.aHome();        						
         					} else {
-        						this.errorUsuario = {
+        						this.error = {
         								status: true,
         								encabezado: 'El correo electrónico ya está registrado',
         	                        	tipo: 'danger',
@@ -27,15 +28,29 @@
         	                        	link: urls.RESTABLECER_CONTRASENIA
         						}
         					}
-        				}.bind(this));
+        				}.bind(this))
+                    .error(function(data){
+                        this.error = {
+                            status: true,
+                            encabezado: 'Error',
+                            tipo: 'danger',
+                            mensaje: data.error,                  
+                        }
+                    }.bind(this));
         	} else {
-                console.log("no coinciden")
+                var mensaje = valid ? 'Ambas contraseñas deben coincidir.' : 'Completa correctamente el formulario'
+                this.error = {
+                        status: true,
+                        encabezado: 'Error',
+                        tipo: 'danger',
+                        mensaje: mensaje                  
+                };
+                this.usuario.password = '';
+                this.confirmacion.password = '';
             }
         };
     	
         this.contraseniasNoCoinciden = function() {
-            console.log(this.usuario.password);
-            console.log(this.confirmacion.password);
         	return !!this.usuario.password 
         		&& !!this.confirmacion.password
         		&& this.usuario.password != this.confirmacion.password;
@@ -51,5 +66,12 @@
     			'has-error': field.$dirty && field.$invalid
     			};
     	};
+
+        this.error = {
+            status: false
+        };
+
+        this.usuario = {};
+        this.confirmacion = {};
    }]);
 })(window.angular);

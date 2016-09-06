@@ -52,9 +52,14 @@
     	};
 
         this.eliminarItem = function(item) {
-            svc.eliminarUsuario(item).then(function(data) {
-                this.refrescarUsuarios();
-            }.bind(this));
+            if(cookiesSvc.getCookieDeAutorizacion().id != item.id) {
+                svc.eliminarUsuario(item).then(function(data) {
+                    this.refrescarUsuarios();
+                }.bind(this));
+            }
+            else {
+                alert("¡POR FAVOR NO SE ELIMINE A USTED MISMO! ¡EL MUNDO SE VA A ACABAR!");
+            }
         }
 
         this.usuarios = [];
