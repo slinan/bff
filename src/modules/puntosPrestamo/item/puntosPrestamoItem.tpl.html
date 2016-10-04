@@ -12,13 +12,13 @@
 				ng-class="{ 'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && form.nombre.$dirty}">
 				<input class="form-control" placeholder="Nombre*"
 					ng-model="ctrl.puntoPrestamo.nombre" name="nombre"
-					required>
+					maxlength="50" required>
 			</div>
 			<div class="form-group"
 				ng-class="{ 'has-success': form.direccion.$valid && form.direccion.$dirty, 'has-error': form.direccion.$invalid && form.direccion.$dirty}">
 				<input class="form-control" placeholder="Direccion*"
 					ng-model="ctrl.puntoPrestamo.direccion" name="direccion"
-					required>
+					maxlength="60" required>
 			</div>
 			<div class="form-group" ng-show="!!ctrl.puntoPrestamo.tiposBicis">
 				<h4> Bicicletas disponibles por tipo:</h4>

@@ -33,6 +33,34 @@
             $location.path(urls.USUARIOS);
         }
 
+        this.aHacerReserva = function() {
+            $location.path(urls.HACER_RESERVA);
+        }
+
+        this.aCrearPrestamo = function() {
+            $location.path(urls.CREAR_PRESTAMO);
+        }
+
+        this.aPrestamosUsuario = function() {
+            $location.path(urls.PRESTAMOS_USUARIO);
+        }
+
+        this.aReporte = function() {
+            $location.path(urls.REPORTE);
+        }
+
+        this.aBicis = function() {
+            $location.path(urls.BICIS);
+        }
+
+        this.aReviews = function() {
+            $location.path(urls.REVIEWS);
+        }
+
+        this.aRetornos = function() {
+            $location.path(urls.RETORNOS);
+        }
+
     	this.urlForbiddenCuandoAutenticado = function(url) {
     		return url == urls.LOGIN
     			|| url == urls.REGISTRO;
@@ -42,11 +70,24 @@
             return url == urls.TIPOS_BICI
                 || url == urls.TIPOS_MULTA
                 || url == urls.PUNTOS_PRESTAMO
-                || url == urls.USUARIOS;
+                || url == urls.USUARIOS
+                || url == urls.BICIS;
+        }
+
+        this.urlForbiddenNoFuncionario = function(url) {
+            return url == urls.CREAR_PRESTAMO
+                || url == urls.RETORNOS;
+        }
+
+        this.urlForbiddenNoUsuario = function(url) {
+            return url == urls.PRESTAMOS_USUARIO
+                || url == urls.HACER_RESERVA;
         }
 
         this.urlForbiddenNoAutenticado = function(url) {
-            return this.urlForbiddenNoAdmin(url);
+            return this.urlForbiddenNoAdmin(url)
+                || this.urlForbiddenNoFuncionario(url)
+                || this.urlForbiddenNoUsuario(url);
         }
     }]);
 })(window.angular);

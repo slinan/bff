@@ -1,0 +1,37 @@
+<div class="bikes-form">
+	<h4 class="title">Préstamos para retorno</h4>
+</div>
+</br>
+<table class="table table-striped table-hover"
+	ng-show="ctrl.prestamos.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Bicicleta</th>
+			<th>Usuario</th>
+			<th>Usuario Retorno</th>
+			<th>Fecha y Hora</th>
+			<th>Punto Inicial</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="p in ctrl.prestamos">
+			<td>{{p.id}}</td>
+			<td>{{p.bicicleta}}</td>
+			<td>{{ctrl.usuarios[p.usuario].username || p.usuario}}</td>
+			<td>{{ctrl.usuarios[p.usuarioAutorizado].username || p.usuarioAutorizado}}</td>
+			<td>{{p.fecha.split("T").join(" ").split("Z")[0]}}</td>
+			<td>{{ctrl.puntosPrestamo[p.punto].nombre || p.punto}}</td>
+			<td align="center">
+				<button type="button" class="btn btn-success"
+					ng-click="ctrl.abrirItem(p, ctrl.usuarios, ctrl.puntosPrestamo, ctrl.tiposMultas)">
+	   				<span class="glyphicon glyphicon-ok" aria-hidden="true">
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="big-message" ng-show="!ctrl.prestamos.length">
+	<h3>No hay préstamos en el momento.</h3>
+</div>

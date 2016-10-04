@@ -1,0 +1,74 @@
+<div class="bikes-form">
+	<h4 class="title">Reservas</h4>
+</div>
+<h3 class="subtitle">Mis reservas</h3>
+<table class="table table-striped table-hover" ng-show="ctrl.reservas.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Bicicleta</th>
+			<th>Fecha y hora</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="r in ctrl.reservas">
+			<td>{{r.id}}</td>
+			<td>{{r.bicicleta}}</td>
+			<td>{{r.fecha}}</td>
+		</tr>
+	</tbody>
+</table>
+<div class="big-message" ng-show="!ctrl.reservas.length">
+	<h3>No hay reservas en el momento.</h3>
+</div>
+<h3 class="subtitle">Hacer reserva</h3>
+<div class="filters-bar panel panel-default">
+	<div class="panel-body">
+		<form name="formBusqueda" class="form-inline" role="form" ng-submit="formBusqueda.$valid && ctrl.refrescarBicisDisponibles()">
+			<div class="col-md-12">
+				<errors id="errors" error="ctrl.error"></errors>
+			</div>
+			<div class="form-group group-inline">
+				<label for="fecha"> Hora: </label>
+				<input type="time" class="form-control" id="fecha" placeholder="HH:mm" ng-model="ctrl.busqueda.dateTime">
+			</div>
+			<div class="form-group group-inline">
+	    		<label for="puntos">Punto de préstamo:</label>
+	    		<select class="form-control" name="singleSelect" id="puntos" ng-model="ctrl.busqueda.punto" required>
+	                <option value="">Seleccione un punto</option>
+	                <option ng-repeat="p in ctrl.puntosPrestamo" value="{{p.id}}">{{p.nombre}}</option>
+	            </select> 
+	  		</div>
+	  		<div class="form-group group-inline">
+	    		<label for="tipos">Tipo de bicicleta:</label>
+	    		<select class="form-control" name="singleSelect" id="tipos" ng-model="ctrl.busqueda.tipo" required>
+	                <option value="">Seleccione un tipo</option>
+	                <option ng-repeat="t in ctrl.tiposBici" value="{{t.id}}">{{t.nombre}}</option>
+	            </select> 
+	  		</div>
+	  		<button type="submit" class="btn btn-success">Buscar bicis disponibles</button>
+		</form>
+	</div>
+</div>
+<table class="table table-striped table-hover" ng-show="ctrl.bicisDisponibles.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Tipo</th>
+			<th>Punto de Prestamo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="b in ctrl.bicisDisponibles">
+			<td>{{b.id}}</td>
+			<td>{{b.tipo}}</td>
+			<td>{{b.puntoPrestamo}}</td>
+			<td align="center">
+				<button type="button" class="btn btn-success" ng-click="ctrl.reservar(b.id)">Reservar</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div class="big-message" ng-show="!ctrl.bicisDisponibles.length">
+	<h3>No bicis disponibles de este tipo para la fecha y el punto seleccionados.</h3>
+</div>

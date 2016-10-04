@@ -7,18 +7,22 @@
         
     	this.login = function () {
             svc.login(this.usuario).success(function(data) {
+                console.log(data)
                 var dataCookie = {
                     id: data.id,
-                    rol: data.tipoUsuario
+                    token: data.token,
+                    is_admin: data.user.groups.indexOf(2)!=-1,
+                    is_staff: data.user.groups.indexOf(1)!=-1
                 };
                 cookiesSvc.crearCookieDeAutorizacion(dataCookie);
                 redirect.aHome();                               
             }.bind(this)).error(function(data) {
+                var mensaje = data.non_field_errors[0];
                 this.error = {
                         status: true,
-                        encabezado: 'Credenciales Inválidas',
+                        encabezado: 'Error de autenticación',
                         tipo: 'danger',
-                        mensaje: 'Las credenciales provistas no son correctas.'                  
+                        mensaje: mensaje               
                 };
                 this.usuario.password = '';
             }.bind(this));
@@ -34,7 +38,15 @@
         };
         
         this.esAdmin = function() {
-            return !!cookiesSvc.getCookieDeAutorizacion() && cookiesSvc.getCookieDeAutorizacion().rol == "A";
+            return !!cookiesSvc.getCookieDeAutorizacion() && cookiesSvc.getCookieDeAutorizacion().is_admin;
+        };
+
+        this.esFuncionario = function() {
+            return !!cookiesSvc.getCookieDeAutorizacion() && cookiesSvc.getCookieDeAutorizacion().is_staff;
+        };
+
+        this.esUsuario = function() {
+            return !this.esAdmin() && !this.esFuncionario();
         };
 
         this.irALogin = function () {
@@ -64,9 +76,37 @@
         this.irAUsuarios = function() {
             redirect.aUsuarios();
         }
-                        
+          
+        this.irAHacerReserva = function() {
+            redirect.aHacerReserva();
+        }
+
+        this.irACrearPrestamo = function() {
+            redirect.aCrearPrestamo();
+        }
+
+        this.irAPrestamosUsuario = function() {
+            redirect.aPrestamosUsuario();
+        }
+
+        this.irAReporte = function() {
+            redirect.aReporte();
+        }
+
+        this.irABicis = function() {
+            redirect.aBicis();
+        }
+
+        this.irAReviews = function() {
+            redirect.aReviews();
+        }
+
+        this.irARetornos = function() {
+            redirect.aRetornos();
+        }
+
         this.usuario = {
-    		email: undefined,
+    		username: undefined,
     		password: undefined
         };
 
@@ -84,6 +124,12 @@
                 this.irAHome();
             // Evita que un usuario no administrador acceda a las vistas de admin.
             } else if (this.autenticado() && !this.esAdmin() && redirect.urlForbiddenNoAdmin(nextUrl)) {
+                this.irAHome();
+            // Evita que un usuario no funcionario acceda a las vistas de funcionario.
+            } else if (this.autenticado() && !this.esFuncionario() && redirect.urlForbiddenNoFuncionario(nextUrl)) {
+                this.irAHome();
+            // Evita que un usuario no regular acceda a las vistas de usuarios regulares.
+            } else if (this.autenticado() && !this.esUsuario() && redirect.urlForbiddenNoUsuario(nextUrl)) {
                 this.irAHome();
             }
         }.bind(this));

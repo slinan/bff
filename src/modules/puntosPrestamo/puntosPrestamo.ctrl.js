@@ -1,11 +1,10 @@
 (function (ng) {
     var mod = ng.module('puntosPrestamoModule');
 
-    mod.controller('puntosPrestamoCtrl', ['puntosPrestamoService', '$modal', 'cookiesService',
-                                    function (svc, $modal, cookiesSvc) {        
+    mod.controller('puntosPrestamoCtrl', ['puntosPrestamoService', '$modal', 'cookiesService', 'confirmacionService',
+                                    function (svc, $modal, cookiesSvc, confirmacion) {        
         
         this.nuevoPuntoPrestamo = function() {
-            console.log("Entra");
             this.abrirItem({nombre: "", direccion: ""});
         }
 
@@ -59,12 +58,21 @@
         };
 
         this.eliminarItem = function(item) {
-            svc.eliminarPuntoPrestamo(item).then(function(data) {
-                this.refrescarPuntosPrestamo();
-            }.bind(this));
+            confirmacion.showModal({}, this.opcionesEliminacion)
+                .then(function (result) {
+                    svc.eliminarPuntoPrestamo(item).then(function(data) {
+                        this.refrescarPuntosPrestamo();
+                    }.bind(this));
+                }.bind(this));
         }
                 
         this.puntosPrestamo = [];
+        this.opcionesEliminacion = {
+            closeButtonText: 'Cancelar',
+            actionButtonText: 'Eliminar',
+            headerText: 'Confirmar Eliminación',
+            bodyText: '¿Seguro que desea continuar? Se eliminarán las bicicletas asociadas.'
+        };
         this.refrescarPuntosPrestamo();
    }]);
 })(window.angular);

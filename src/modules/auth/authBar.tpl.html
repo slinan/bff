@@ -15,10 +15,17 @@
     		Opciones <span class="caret"></span>
   		</button>
   		<ul class="dropdown-menu">
+        <li ng-show="ctrl.esAdmin()" ng-click="ctrl.irABicis()"><a>Bicicletas</a></li>
     		<li ng-show="ctrl.esAdmin()" ng-click="ctrl.irATiposBici()"><a>Tipos Bicicleta</a></li>
     		<li ng-show="ctrl.esAdmin()" ng-click="ctrl.irATiposMulta()"><a>Tipos Multa</a></li>
     		<li ng-show="ctrl.esAdmin()" ng-click="ctrl.irAPuntosPrestamo()"><a>Puntos Préstamo</a></li>
         <li ng-show="ctrl.esAdmin()" ng-click="ctrl.irAUsuarios()"><a>Usuarios</a></li>
+        <li ng-show="ctrl.esUsuario()" ng-click="ctrl.irAHacerReserva()"><a>Crear Reservas</a></li>
+        <li ng-show="ctrl.esUsuario()" ng-click="ctrl.irAPrestamosUsuario()"><a>Mis Préstamos</a></li>
+        <li ng-show="ctrl.esUsuario()" ng-click="ctrl.irAReporte()"><a>Reporte Histórico</a></li>
+        <li ng-show="ctrl.esAdmin() || ctrl.esUsuario()" ng-click="ctrl.irAReviews()"><a>Reviews Puntos</a></li>
+        <li ng-show="ctrl.esFuncionario()" ng-click="ctrl.irACrearPrestamo()"><a>Préstamos</a></li>
+        <li ng-show="ctrl.esFuncionario()" ng-click="ctrl.irARetornos()"><a>Retornos</a></li>
         <li ng-click="ctrl.logout()"><a>Log Out</a></li>
   		</ul>		
 	</div>

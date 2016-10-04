@@ -12,34 +12,51 @@
             <div class="form-group">
 				<label for="singleSelect"> Tipo de Usuario: </label><br>
                     <select class="form-control" name="singleSelect" ng-model="ctrl.usuario.tipoUsuario">
-                        <option value="F">Funcionario</option>
-                        <option value="U">Usuario</option>
-                        <option value="A" >Administrador</option>
+                        <option value="Funcionario">Funcionario</option>
+                        <option value="Usuario">Usuario</option>
+                        <option value="Administrador" >Administrador</option>
                     </select> 
             </div>               
-
             <div class="form-group"
-				ng-class="{ 'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && form.nombre.$dirty}">
-				<input class="form-control" placeholder="Nombre*"
-					ng-model="ctrl.usuario.nombre" name="nombre"
-					required>
+				ng-class="{ 'has-success': form.username.$valid && form.username.$dirty, 'has-error': form.username.$invalid && form.username.$dirty}">
+				<label for="username"> Username: </label><br>
+				<input class="form-control" placeholder="Username*"
+					ng-model="ctrl.usuario.username" name="username"
+					maxlength="50" required>
 			</div>
             <div class="form-group"
-				ng-class="{ 'has-success': form.fechaNacimiento.$valid && form.fechaNacimiento.$dirty, 'has-error': form.fechaNacimiento.$invalid && form.fechaNacimiento.$dirty}">
-				<input class="form-control" placeholder="Fecha de Nacimiento*"
-					ng-model="ctrl.usuario.fechaNacimiento" name="fechaNacimiento" type="date"
-					required>
+				ng-class="{ 'has-success': form.first_name.$valid && form.first_name.$dirty, 'has-error': form.first_name.$invalid && form.first_name.$dirty}">
+				<label for="first_name"> Nombre: </label><br>
+				<input class="form-control" placeholder="Nombre*"
+					ng-model="ctrl.usuario.first_name" name="first_name"
+					maxlength="50" required>
+			</div>
+			<div class="form-group"
+				ng-class="{ 'has-success': form.last_name.$valid && form.last_name.$dirty, 'has-error': form.last_name.$invalid && form.last_name.$dirty}">
+				<label for="last_name"> Apellido: </label><br>
+				<input class="form-control" placeholder="Apellido*"
+					ng-model="ctrl.usuario.last_name" name="last_name"
+					maxlength="50" required>
 			</div>
             <div class="form-group"
 				ng-class="{ 'has-success': form.email.$valid && form.email.$dirty, 'has-error': form.email.$invalid && form.email.$dirty}">
+				<label for="email"> Email: </label><br>
 				<input class="form-control" placeholder="Email*"
 					ng-model="ctrl.usuario.email" name="email" type="email"
-					required>
+					maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required>
 			</div>
             <div class="form-group"
 				ng-class="{ 'has-success': form.password.$valid && form.password.$dirty, 'has-error': form.password.$invalid && form.password.$dirty}">
+				<label for="password"> Contraseña: </label><br>
 				<input class="form-control" placeholder="Password*"
 					ng-model="ctrl.usuario.password" name="password" type="password"
+					maxlength="50" required>
+			</div>
+            <div class="form-group"
+				ng-class="{ 'has-success': form.passwordConfirmation.$valid && form.passwordConfirmation.$dirty, 'has-error': form.passwordConfirmation.$invalid && form.passwordConfirmation.$dirty}">
+				<label for="password"> Confirmación Contraseña: </label><br>
+				<input class="form-control" placeholder="Confirmación Password*"
+					ng-model="ctrl.confirmacion.password" name="passwordConfirmation" type="password"
 					required>
 			</div>
 			<button type="button" class="btn btn-success"

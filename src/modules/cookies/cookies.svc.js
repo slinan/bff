@@ -9,8 +9,10 @@
         	$cookies.putObject(
             		this.nombreCookieDeAutorizacion, 
             		{
-            			id: data.id,
-            			rol: data.rol 
+                        id: data.id,
+                        token: data.token,
+                        is_admin: data.is_admin,
+                        is_staff: data.is_staff
             		})
         };
                        

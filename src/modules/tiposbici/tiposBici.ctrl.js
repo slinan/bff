@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module('tiposBiciModule');
 
-    mod.controller('tiposBiciCtrl', ['tiposBiciService', '$modal', 'cookiesService',
-                                    function (svc, $modal, cookiesSvc) {    	
+    mod.controller('tiposBiciCtrl', ['tiposBiciService', '$modal', 'cookiesService', 'confirmacionService',
+                                    function (svc, $modal, cookiesSvc, confirmacion) {    	
     	
         this.nuevoTipoBici = function() {
             this.abrirItem({nombre: ""});
@@ -43,12 +43,21 @@
     	};
 
         this.eliminarItem = function(item) {
-            svc.eliminarTipoBici(item).then(function(data) {
-                this.refrescarTiposBici();
-            }.bind(this));
+            confirmacion.showModal({}, this.opcionesEliminacion)
+                .then(function (result) {
+                    svc.eliminarTipoBici(item).then(function(data) {
+                        this.refrescarTiposBici();
+                    }.bind(this));
+                }.bind(this));
         }
 
         this.tiposBici = [];
+        this.opcionesEliminacion = {
+            closeButtonText: 'Cancelar',
+            actionButtonText: 'Eliminar',
+            headerText: 'Confirmar Eliminación',
+            bodyText: '¿Seguro que desea continuar? Se eliminarán las bicicletas asociadas.'
+        };
     	this.refrescarTiposBici();
    }]);
 })(window.angular);

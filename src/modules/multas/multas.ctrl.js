@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module('multasModule');
 
-    mod.controller('multasCtrl', ['multasService', '$modal', 'cookiesService',
-                                    function (svc, $modal, cookiesSvc) {    	
+    mod.controller('multasCtrl', ['multasService', '$modal', 'cookiesService', 'confirmacionService',
+                                    function (svc, $modal, cookiesSvc, confirmacion) {    	
     	
         this.nuevoMulta = function() {
             console.log("Entra");
@@ -45,12 +45,21 @@
     	};
 
         this.eliminarItem = function(item) {
-            svc.eliminarMulta(item).then(function(data) {
-                this.refrescarMultas();
-            }.bind(this));
+            confirmacion.showModal({}, this.opcionesEliminacion)
+                .then(function (result) {
+                    svc.eliminarMulta(item).then(function(data) {
+                        this.refrescarMultas();
+                    }.bind(this));
+                }.bind(this));
         }
 
         this.multas = [];
+        this.opcionesEliminacion = {
+            closeButtonText: 'Cancelar',
+            actionButtonText: 'Eliminar',
+            headerText: 'Confirmar Eliminación',
+            bodyText: '¿Seguro que desea continuar?'
+        };
     	this.refrescarMultas();
    }]);
 })(window.angular);

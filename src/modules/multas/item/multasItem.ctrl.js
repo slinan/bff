@@ -25,7 +25,8 @@
     		}
             
     	};
-                                         this.errorOrSuccess = function(field) {
+        
+        this.errorOrSuccess = function(field) {
     		return {
     			'has-success': field.$dirty && field.$valid, 
     			'has-error': field.$dirty && field.$invalid

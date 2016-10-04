@@ -12,20 +12,20 @@
 		<tr>
 			<th>Id</th>
             <th>Tipo</th>
+            <th>Username</th>
 			<th>Nombre</th>
-            <th>Fecha de Nacimiento</th>
+			<th>Apellido</th>
             <th>Email</th>
-            <th>Password</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="t in ctrl.usuarios">
 			<td>{{t.id}}</td>
-            <td>{{t.tipoUsuario}}</td>
-			<td>{{t.nombre}}</td>
-            <td>{{t.fechaNacimiento}}</td>
+            <td>{{t.groups.indexOf(2)!=-1 ? "Administrador" : (t.groups.indexOf(1)!=-1 ? "Funcionario" : "Usuario")}}</td>
+            <td>{{t.username}}</td>
+			<td>{{t.first_name}}</td>
+			<td>{{t.last_name}}</td>
             <td>{{t.email}}</td>
-            <td>{{t.password}}</td>
 			<td align="center">
 				<button type="button" class="btn btn-success"
 					ng-click="ctrl.abrirItem(t)">

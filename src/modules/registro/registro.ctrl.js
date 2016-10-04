@@ -6,28 +6,30 @@
                 
         this.crearUsuario = function(valid) {
         	if(valid && !this.contraseniasNoCoinciden()) {
-                this.usuario.tipoUsuario = "U"
-                this.usuario.fechaNacimiento = dateFilter(this.usuario.fechaNacimiento, 'yyyy-MM-dd'); 
         		svc.registrarUsuario(this.usuario)
                     .success(
         				function(data) {
         			        this.error = {status: false};
-        					if(!data.error) {
-        						var dataCookie = {
-            						id: data.id,
-            						rol: data.tipoUsuario
-            					};
+                            this.usuario = {username: data.username, password: this.usuario.password}
+                            authSvc.login(this.usuario).success(function(data) {
+                                console.log(data)
+                                var dataCookie = {
+                                    id: data.id,
+                                    token: data.token,
+                                    is_admin: data.user.groups.indexOf(2)!=-1,
+                                    is_staff: data.user.groups.indexOf(1)!=-1
+                                };
                                 cookiesSvc.crearCookieDeAutorizacion(dataCookie);
-                				redirect.aHome();        						
-        					} else {
-        						this.error = {
-        								status: true,
-        								encabezado: 'El correo electrónico ya está registrado',
-        	                        	tipo: 'danger',
-        	                        	mensaje: ' ¿Olvidó su contraseña? ',                  
-        	                        	link: urls.RESTABLECER_CONTRASENIA
-        						}
-        					}
+                                redirect.aHome();                               
+                            }.bind(this)).error(function(data) {
+                                this.error = {
+                                        status: true,
+                                        encabezado: 'Credenciales Inválidas',
+                                        tipo: 'danger',
+                                        mensaje: 'Las credenciales provistas no son correctas.'                  
+                                };
+                                this.usuario.password = '';
+                            }.bind(this));
         				}.bind(this))
                     .error(function(data){
                         this.error = {

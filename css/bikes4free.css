@@ -65,7 +65,8 @@ footer a:hover {
 	text-align: center;
 	height: 100%;
 	width: 100%;
-	margin-top: 160px;
+	margin-top: 80px;
+	margin-bottom: 80px;
 }
 
 .bikes-form {
@@ -313,4 +314,18 @@ footer a:hover {
 
 .modal-dialog {
 	width: 85%;
+}
+
+.group-inline {
+	margin-right: 15px;
+}
+
+.subtitle {
+	margin-top: 25px;
+}
+
+.filters-bar {
+	margin-top: 25px;
+	background-color: #f9f9f9;
+    border: 0;
 }
