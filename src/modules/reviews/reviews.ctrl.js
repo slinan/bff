@@ -43,12 +43,14 @@
             } else {
                 svc.filtrarPuntos(this.calificacion).then(
                     function(data){
+                        this.mensajeVacio = data.length == 0 ? "No hay puntos de préstamo que cumplan con el filtro." : this.mensajeVacio;
                         this.puntosPrestamo = data;
                     }.bind(this));
             }
         };
 
         this.puntosPrestamo = [];
+        this.mensajeVacio = "No hay puntos de préstamo en el momento.";
         this.opcionesConfirmacion = {
             closeButtonText: '',
             actionButtonText: 'Continuar',

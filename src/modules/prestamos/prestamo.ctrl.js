@@ -44,24 +44,38 @@
             modalInstance.result.then(function(infoPrestamo) {
                 infoPrestamo.fecha = new Date();
                 if(!!reserva.id) {
-                    svc.crearPrestamo(infoPrestamo).then(function(data) {
-                        svc.asociarPrestamoAReserva(data.id, reserva).then(function(data) {
-                            bicisSvc.quitarPuntoPrestamoBici(data.bicicleta).then(function(data) {
-                                confirmacion.showModal({}, this.confirmarPrestamo)
-                                    .then(function (result) {
-                                        this.refrescarReservas();
-                                    }.bind(this));
-                            }.bind(this))
+                    svc.crearPrestamo(infoPrestamo)
+                        .success(function(data) {
+                            svc.asociarPrestamoAReserva(data.id, reserva).then(function(data) {
+                                bicisSvc.quitarPuntoPrestamoBici(data.bicicleta).then(function(data) {
+                                    confirmacion.showModal({}, this.confirmarPrestamo)
+                                        .then(function (result) {
+                                            this.refrescarReservas();
+                                        }.bind(this));
+                                }.bind(this))
+                            }.bind(this));
+                        }.bind(this))
+                        .error(function(error) {
+                            confirmacion.showModal({}, this.noPrestamo)
+                                .then(function (result) {
+                                    this.refrescarReservas();
+                                }.bind(this));
                         }.bind(this));
-                    }.bind(this));
                 } else {
-                    svc.crearPrestamo(infoPrestamo).then(function(data) {
+                    svc.crearPrestamo(infoPrestamo)
+                    .success(function(data) {
                         bicisSvc.quitarPuntoPrestamoBici(data.bicicleta).then(function(data) {
                             confirmacion.showModal({}, this.confirmarPrestamo)
                                 .then(function (result) {
                                     this.refrescarReservas();
                                 }.bind(this));
                         }.bind(this))
+                    }.bind(this))
+                    .error(function(error) {
+                            confirmacion.showModal({}, this.noPrestamo)
+                                .then(function (result) {
+                                    this.refrescarReservas();
+                                }.bind(this));
                     }.bind(this));
                 }
             }.bind(this));
@@ -99,6 +113,12 @@
             actionButtonText: 'OK',
             headerText: 'Préstamo creado',
             bodyText: 'Se ha registrado el préstamo éxitosamente.'
+        };
+        this.noPrestamo = {
+            closeButtonText: '',
+            actionButtonText: 'OK',
+            headerText: 'Préstamo no éxitoso',
+            bodyText: 'La bicicleta se encuentra reservada.'
         };
         this.refrescarReservas();
         this.refrescarPuntosPrestamo();

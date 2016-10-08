@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module('reservasModule');
 
-    mod.controller('reservasCtrl', ['reservasService', '$modal', 'cookiesService', 'puntosPrestamoService', 'tiposBiciService',
-                                    function (svc, $modal, cookiesSvc, puntosPrestamoSvc, tiposBiciSvc) {        
+    mod.controller('reservasCtrl', ['reservasService', '$modal', 'cookiesService', 'puntosPrestamoService', 'tiposBiciService', 'confirmacionService',
+                                    function (svc, $modal, cookiesSvc, puntosPrestamoSvc, tiposBiciSvc, confirmacion) {        
         
         this.refrescarReservas = function() {
             svc.getReservasUsuario(cookiesSvc.getCookieDeAutorizacion().id).then(function(data) {
@@ -42,8 +42,12 @@
         this.reservar = function(bici_id) {
             this.reserva = {idBicicleta: bici_id, idUsuario: cookiesSvc.getCookieDeAutorizacion().id, dateTime: this.busqueda.dateTime};
             svc.nuevaReserva(this.reserva).then(function(data) {
-                this.bicisDisponibles = data;
-                this.refrescarReservas();
+                confirmacion.showModal({}, this.confirmarReserva)
+                    .then(function (result) {
+                        this.bicisDisponibles = data;
+                        this.refrescarReservas();
+                    }.bind(this));
+                
             }.bind(this));
         };
 
@@ -63,6 +67,12 @@
         this.refrescarTiposBici();
         this.error = {
             status: false
+        };
+        this.confirmarReserva = {
+            closeButtonText: '',
+            actionButtonText: 'OK',
+            headerText: 'Reserva creada',
+            bodyText: 'Se ha registrado la reserva éxitosamente.'
         };
    }]);
 })(window.angular);

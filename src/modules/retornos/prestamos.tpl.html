@@ -20,7 +20,7 @@
 			<td>{{p.bicicleta}}</td>
 			<td>{{ctrl.usuarios[p.usuario].username || p.usuario}}</td>
 			<td>{{ctrl.usuarios[p.usuarioAutorizado].username || p.usuarioAutorizado}}</td>
-			<td>{{p.fecha.split("T").join(" ").split("Z")[0]}}</td>
+			<td>{{p.fecha | date:"dd/MM/yyyy h:mma"}}</td>
 			<td>{{ctrl.puntosPrestamo[p.punto].nombre || p.punto}}</td>
 			<td align="center">
 				<button type="button" class="btn btn-success"

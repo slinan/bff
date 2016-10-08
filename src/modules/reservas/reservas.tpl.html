@@ -14,7 +14,7 @@
 		<tr ng-repeat="r in ctrl.reservas">
 			<td>{{r.id}}</td>
 			<td>{{r.bicicleta}}</td>
-			<td>{{r.fecha}}</td>
+			<td>{{r.fecha | date:"dd/MM/yyyy h:mma"}}</td>
 		</tr>
 	</tbody>
 </table>

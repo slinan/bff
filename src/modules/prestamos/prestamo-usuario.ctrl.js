@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module('prestamosModule');
 
-    mod.controller('prestamosUsuarioCtrl', ['prestamosService', 'usuariosService', 'puntosPrestamoService', 'cookiesService','$modal',
-                                    function (svc, usuariosSvc, puntosPrestamoSvc, cookiesSvc, $modal) {    	
+    mod.controller('prestamosUsuarioCtrl', ['prestamosService', 'usuariosService', 'puntosPrestamoService', 'cookiesService', 'confirmacionService', '$modal',
+                                    function (svc, usuariosSvc, puntosPrestamoSvc, cookiesSvc, confirmacion, $modal) {    	
     	
 
         this.abrirItem = function(prestamo, usuarios, puntosPrestamo) {
@@ -32,10 +32,12 @@
             });
 
             modalInstance.result.then(function(infoPrestamo) {
-                svc.actualizarPrestamo(infoPrestamo).then(
-                    function(data) {
+                svc.actualizarPrestamo(infoPrestamo).then( function(data) {
+                    confirmacion.showModal({}, this.confirmarEdicion)
+                    .then(function (result) {
                         this.refrescarPrestamos();
-                    }.bind(this));
+                    }.bind(this));        
+                }.bind(this));
             }.bind(this));
         };
 
@@ -66,6 +68,12 @@
         this.prestamos = [];
         this.puntosPrestamo = {};
         this.usuarios = {};
+        this.confirmarEdicion = {
+            closeButtonText: '',
+            actionButtonText: 'OK',
+            headerText: 'Usuario actualizado',
+            bodyText: 'El cambio en usuario autorizado para retorno se registró éxitosamente.'
+        };
         this.refrescarPrestamos();
         this.refrescarPuntosPrestamo();
         this.refrescarUsuarios();

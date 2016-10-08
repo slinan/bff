@@ -45,7 +45,6 @@
         this.usuarios = usuarios;
         this.puntosPrestamo = puntosPrestamo;
         this.usuarioAutorizado = this.usuarios[this.prestamo.usuarioAutorizado].username
-        console.log(this.usuarioAutorizado)
         this.error = {
             status: false
         };

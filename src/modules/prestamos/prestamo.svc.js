@@ -28,10 +28,14 @@
     	}
 
         this.crearPrestamo = function(prestamo) {
-            return $http.post('https://bf42.herokuapp.com/api/prestamos/', prestamo).then(
-                    function(response) {
+            return $http.post('https://bf42.herokuapp.com/api/prestamos/', prestamo)
+                    .success(function(response) {
                         console.log(response);
                         return response['data'];
+                    })
+                    .error(function(error) {
+                        console.log(error)
+                        return error;
                     });
         }
 

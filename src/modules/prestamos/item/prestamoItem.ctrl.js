@@ -19,7 +19,9 @@
                 bicisSvc.getBici(prestamo.bicicleta)
                     .success(function(bici) {
                         if(bici.puntoPrestamo) {
-                            $modalInstance.close(this.prestamo);
+                            if(this.verificarUsuarios()) {
+                                $modalInstance.close(this.prestamo);
+                            }
                         } else {
                             this.error = {
                                 status: true,
@@ -39,6 +41,34 @@
                     }.bind(this));
     		}
     	};
+
+        this.verificarUsuarios = function() {
+                var idUsuario;
+                var idUsuarioAutorizado;
+
+                for (var key in this.usuarios) {
+                  if(this.usuarios[key].username == this.usuarioAutorizado) {
+                    idUsuarioAutorizado = key;
+                  } 
+                  if(this.usuarios[key].username == this.usuario) {
+                    idUsuario = key;
+                  }
+                }
+
+                if(!idUsuarioAutorizado || !idUsuario) {
+                    this.error = {
+                            status: true,
+                            encabezado: 'Completa correctamente el formulario',
+                            tipo: 'danger',
+                            mensaje: 'Ingresa usuarios válidos.'                  
+                        };
+                    return false;
+                } else {
+                    this.prestamo.usuarioAutorizado = idUsuarioAutorizado;
+                    this.prestamo.usuario = idUsuario;
+                    return true;
+                }
+        }
 
         this.getPunto = function() {
                 bicisSvc.getBici(prestamo.bicicleta)
@@ -71,6 +101,10 @@
     	this.prestamo = prestamo;
         this.usuarios = usuarios;
         this.puntosPrestamo = puntosPrestamo;
+        this.infoAnterior = !!this.prestamo.usuario;
+        this.usuario = this.prestamo.usuario && this.usuarios[this.prestamo.usuario].username
+        this.usuarioAutorizado = this.prestamo.usuarioAutorizado && this.usuarios[this.prestamo.usuarioAutorizado].username
+
         if(!!this.prestamo.bicicleta) {
             this.getPunto();
         }

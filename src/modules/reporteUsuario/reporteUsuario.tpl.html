@@ -31,7 +31,8 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="h in ctrl.horarios">
-			<td>{{h.hora + ':00'}}</td>
+			<td ng-if="h.hora < 5">{{19+h.hora + ':00'}}</td>
+			<td ng-if="h.hora >= 5">{{h.hora + ':00'}}</td>
 			<td>{{h.cantidad}}</td>
 		</tr>
 	</tbody>
@@ -50,7 +51,7 @@
 	<tbody>
 		<tr ng-repeat="p in ctrl.tiempos">
 			<td>Punto: {{p.prestamo.punto}}<br>
-            Fecha: {{p.prestamo.fecha}}<br>
+            Fecha: {{p.prestamo.fecha | date:"dd/MM/yyyy h:mma"}}<br>
             Bicicleta: {{p.prestamo.bicicleta}}</td>
 			<td>{{p.tiempo}}</td>
 		</tr>

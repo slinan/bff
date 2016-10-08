@@ -21,7 +21,7 @@
 			<td>{{r.id}}</td>
 			<td>{{r.bicicleta}}</td>
 			<td>{{ctrl.usuarios[r.user].username || r.user}}</td>
-			<td>{{r.fecha.split("T").join(" ").split("Z")[0]}}</td>
+			<td>{{r.fecha | date:"dd/MM/yyyy h:mma"}}</td>
 			<td align="center">
 				<button type="button" class="btn btn-success"
 					ng-click="ctrl.abrirItem(r, ctrl.usuarios, ctrl.puntosPrestamo)">

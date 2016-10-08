@@ -1,3 +1,7 @@
+.app-modal-window .modal-dialog {
+  width: 50%;
+}
+
 .btn-success {
 	background-color: #38761F;
 	border-color: #38761F;
