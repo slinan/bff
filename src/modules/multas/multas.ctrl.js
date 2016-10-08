@@ -58,7 +58,7 @@
             closeButtonText: 'Cancelar',
             actionButtonText: 'Eliminar',
             headerText: 'Confirmar Eliminación',
-            bodyText: '¿Seguro que desea continuar?'
+            bodyText: '¿Seguro que desea continuar? Se eliminarán todas las multas asociadas a este tipo de infracción.'
         };
     	this.refrescarMultas();
    }]);

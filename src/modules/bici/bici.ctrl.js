@@ -79,7 +79,7 @@
             closeButtonText: 'Cancelar',
             actionButtonText: 'Eliminar',
             headerText: 'Confirmar Eliminación',
-            bodyText: '¿Seguro que desea continuar?'
+            bodyText: '¿Seguro que desea continuar? Se eliminarán las reservas y préstamos asociados a esta bicicleta.'
         };
     	this.refrescarBicis();
         this.refrescarPuntosPrestamo();

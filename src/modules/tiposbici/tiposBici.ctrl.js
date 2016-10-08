@@ -56,7 +56,7 @@
             closeButtonText: 'Cancelar',
             actionButtonText: 'Eliminar',
             headerText: 'Confirmar Eliminación',
-            bodyText: '¿Seguro que desea continuar? Se eliminarán las bicicletas asociadas.'
+            bodyText: '¿Seguro que desea continuar? Se eliminarán las bicicletas asociadas (y los préstamos y reservas asociados a tales bicicletas).'
         };
     	this.refrescarTiposBici();
    }]);

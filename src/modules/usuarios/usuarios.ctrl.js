@@ -77,7 +77,7 @@
             closeButtonText: 'Cancelar',
             actionButtonText: 'Eliminar',
             headerText: 'Confirmar Eliminación',
-            bodyText: '¿Seguro que desea continuar?'
+            bodyText: '¿Seguro que desea continuar? Se eliminará toda la información asociada a este usuario (préstamos, reservas, retornos, reviews y multas)'
         };
     	this.refrescarUsuarios();
    }]);
