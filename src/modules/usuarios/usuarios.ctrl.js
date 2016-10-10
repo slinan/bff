@@ -33,20 +33,45 @@
             modalInstance.result.then(function(usuario) {
                 console.log(usuario);
                 usuario.groups=[];
-                if(usuario.tipoUsuario=="Administrador") {
-                    usuario.groups.push(2);
-                }else if(usuario.tipoUsuario=="Funcionario"){
-                    usuario.groups.push(1);
-                }
                 if(!usuario.id) {
-                    svc.nuevoUsuario(usuario).then(
-                        function(data) {
-                            this.refrescarUsuarios();
-                        }.bind(this));
+                    if(usuario.tipoUsuario=="Administrador") {
+                        svc.nuevoUsuario(usuario).then(
+                            function(data) {
+                                svc.volverAdmin(data).then(
+                                    function(data) {
+                                        this.refrescarUsuarios();
+                                    }.bind(this));
+                            }.bind(this));
+                    } else if (usuario.tipoUsuario=="Funcionario") {
+                        svc.nuevoUsuario(usuario).then(
+                            function(data) {
+                                svc.volverFuncionario(data).then(
+                                    function(data) {
+                                        this.refrescarUsuarios();
+                                    }.bind(this));
+                            }.bind(this));
+                    }
+                    
                 } else {
-                    svc.actualizarUsuario(usuario).then(
+                    if(usuario.tipoUsuario=="Administrador") {
+                        usuario.groups.push(2);
+                    }else if(usuario.tipoUsuario=="Funcionario"){
+                        usuario.groups.push(1);
+                    }
+                    svc.actualizarUsuario(usuario).success(
                         function(data) {
+                            this.error = {
+                                status: false
+                            };
                             this.refrescarUsuarios();
+                        }.bind(this)).error(
+                        function(data) {
+                            this.error = {
+                                status: true,
+                                encabezado: 'Error',
+                                tipo: 'danger',
+                                mensaje: 'No fue posible editar el usuario. El username ingresado ya se encuentra registrado.',                  
+                            }
                         }.bind(this));
                 }
             }.bind(this));
@@ -61,17 +86,23 @@
         this.eliminarItem = function(item) {
             confirmacion.showModal({}, this.opcionesEliminacion)
                 .then(function (result) {
-                    if(cookiesSvc.getCookieDeAutorizacion().id != item.id) {
-                        svc.eliminarUsuario(item).then(function(data) {
-                            this.refrescarUsuarios();
-                        }.bind(this));
-                    }
-                    else {
-                        alert("¡POR FAVOR NO SE ELIMINE A USTED MISMO! ¡EL MUNDO SE VA A ACABAR!");
-                    }
+                    svc.eliminarUsuario(item).then(function(data) {
+                        this.refrescarUsuarios();
+                    }.bind(this));
                 }.bind(this));
         }
 
+        this.esUsuarioActivo = function(user) {
+            if (typeof(cookiesSvc.getCookieDeAutorizacion()) != 'undefined'){
+                return (cookiesSvc.getCookieDeAutorizacion().id == user.id);
+            } else {
+                return false;
+            }
+        }
+
+        this.error = {
+            status: false
+        };
         this.usuarios = [];
         this.opcionesEliminacion = {
             closeButtonText: 'Cancelar',

@@ -32,7 +32,7 @@
 	<tbody>
 		<tr ng-repeat="h in ctrl.horarios">
 			<td ng-if="h.hora < 5">{{19+h.hora + ':00'}}</td>
-			<td ng-if="h.hora >= 5">{{h.hora + ':00'}}</td>
+			<td ng-if="h.hora >= 5">{{h.hora-5 + ':00'}}</td>
 			<td>{{h.cantidad}}</td>
 		</tr>
 	</tbody>
