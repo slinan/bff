@@ -12,7 +12,7 @@
 				ng-class="{ 'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && form.nombre.$dirty}">
 				<input class="form-control" placeholder="Nombre*"
 					ng-model="ctrl.tipoBici.nombre" name="nombre"
-					maxlength="50" required>
+					maxlength="30" required>
 			</div>
 			<button type="button" class="btn btn-success"
 				ng-click="ctrl.guardar(form.$valid, form.$error)">Guardar
