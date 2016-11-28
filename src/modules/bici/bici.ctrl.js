@@ -15,7 +15,7 @@
                 controllerAs: 'ctrl',
                 resolve: {
                         bici: function() {
-                            return {id: bici.id, tipo: bici.tipo, puntoPrestamo: bici.puntoPrestamo};
+                            return {id: bici.id, tipo: bici.tipo, puntoPrestamo: bici.puntoPrestamo, disponible: bici.disponible};
                         },
                         tiposBici: function() {
                             return tiposBici;
@@ -70,6 +70,14 @@
                         this.refrescarBicis();
                     }.bind(this));
                 }.bind(this));
+        }
+
+        this.getDisponible = function(disponibilidad) {
+            if(!!disponibilidad) {
+                return "Disponible";
+            } else {
+                return "No disponible";
+            }
         }
 
         this.bicis = [];

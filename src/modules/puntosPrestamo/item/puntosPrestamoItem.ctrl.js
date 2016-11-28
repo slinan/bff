@@ -16,6 +16,8 @@
                         mensaje: mensaje                  
                 };
     		} else {
+                this.puntoPrestamo.latitud = this.puntoPrestamo.latitud + "";
+                this.puntoPrestamo.longitud = this.puntoPrestamo.longitud + "";
         		$modalInstance.close(this.puntoPrestamo);
     		}
     	};
@@ -25,6 +27,8 @@
     	};
     	
     	this.puntoPrestamo = puntoPrestamo;
+        this.puntoPrestamo.latitud = parseFloat(this.puntoPrestamo.latitud);
+        this.puntoPrestamo.longitud = parseFloat(this.puntoPrestamo.longitud);
         this.error = {
             status: false
         };

@@ -22,28 +22,28 @@
 				<label for="username"> Username: </label><br>
 				<input class="form-control" placeholder="Username*"
 					ng-model="ctrl.usuario.username" name="username"
-					maxlength="30" required>
+					maxlength="50" required>
 			</div>
             <div class="form-group"
 				ng-class="{ 'has-success': form.first_name.$valid && form.first_name.$dirty, 'has-error': form.first_name.$invalid && form.first_name.$dirty}">
 				<label for="first_name"> Nombre: </label><br>
 				<input class="form-control" placeholder="Nombre*"
 					ng-model="ctrl.usuario.first_name" name="first_name"
-					maxlength="30" required>
+					maxlength="50" required>
 			</div>
 			<div class="form-group"
 				ng-class="{ 'has-success': form.last_name.$valid && form.last_name.$dirty, 'has-error': form.last_name.$invalid && form.last_name.$dirty}">
 				<label for="last_name"> Apellido: </label><br>
 				<input class="form-control" placeholder="Apellido*"
 					ng-model="ctrl.usuario.last_name" name="last_name"
-					maxlength="30" required>
+					maxlength="50" required>
 			</div>
             <div class="form-group"
 				ng-class="{ 'has-success': form.email.$valid && form.email.$dirty, 'has-error': form.email.$invalid && form.email.$dirty}">
 				<label for="email"> Email: </label><br>
 				<input class="form-control" placeholder="Email*"
 					ng-model="ctrl.usuario.email" name="email" type="email"
-					maxlength="30" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required>
+					maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required>
 			</div>
 			<div class="form-group"
 				ng-class="{ 'has-success': form.password.$valid && form.password.$dirty, 'has-error': form.password.$invalid && form.password.$dirty}"
@@ -51,7 +51,7 @@
 				<label for="password"> Contraseña: </label><br>
 				<input class="form-control" placeholder="Password*"
 					ng-model="ctrl.usuario.password" name="password" type="password"
-					maxlength="30" required>
+					maxlength="50" required>
 			</div>
             <div class="form-group"
 				ng-class="{ 'has-success': form.passwordConfirmation.$valid && form.passwordConfirmation.$dirty, 'has-error': form.passwordConfirmation.$invalid && form.passwordConfirmation.$dirty}"

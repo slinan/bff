@@ -1,0 +1,34 @@
+<div class="bikes-form">
+	<h4 class="title">Usuarios</h4>
+</div>
+</br>
+<errors error="ctrl.error"></errors>
+<table class="table table-striped table-hover"
+	ng-show="ctrl.usuarios.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+            <th>Username</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="t in ctrl.usuarios">
+			<td>{{t.id}}</td>
+            <td>{{t.username}}</td>
+			<td>{{t.first_name}}</td>
+			<td>{{t.last_name}}</td>
+			<td align="center">
+				<button type="button" class="btn btn-success"
+					ng-click="ctrl.consolidarPuntos(t.id)">
+	   				<span class="glyphicon glyphicon-usd" aria-hidden="true">
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="big-message" ng-show="!ctrl.usuarios.length">
+	<h3>No hay usuarios en el momento.</h3>
+</div>

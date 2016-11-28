@@ -1,0 +1,27 @@
+<div class="bikes-form">
+	<h4 class="title">Mis Multas</h4>
+</div>
+</br>
+<table class="table table-striped table-hover"
+	ng-show="ctrl.multas.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Fecha</th>
+			<th>Tipo de Infracción</th>
+			<th>Valor</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="m in ctrl.multas">
+			<td>{{m.id}}</td>
+			<td>{{m.fecha | date:"dd/MM/yyyy h:mma"}}</td>
+			<td>{{ctrl.getTipoInfraccion(m.tipoDeInfraccion)}}</td>
+			<td>{{ctrl.getValor(m.tipoDeInfraccion)}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="big-message" ng-show="!ctrl.multas.length">
+	<h3>No hay multas para la búsqueda.</h3>
+</div>

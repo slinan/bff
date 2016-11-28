@@ -4,7 +4,7 @@
     mod.service('tiposBiciService', function($http){
 
     	this.getTiposBici = function() {
-        	return $http.get('https://bf42.herokuapp.com/api/tiposBicicleta/').then(
+        	return $http.get('https://bf43.herokuapp.com/api/tiposBicicleta/').then(
         			function(response) {
         				console.log(response);
         				return response['data'];
@@ -12,7 +12,7 @@
     	};
 
     	this.nuevoTipoBici = function(tipoBici) {
-        	return $http.post('https://bf42.herokuapp.com/api/tiposBicicleta/', tipoBici).then(
+        	return $http.post('https://bf43.herokuapp.com/api/tiposBicicleta/', tipoBici).then(
         			function(response) {
         				console.log(response);
         				return response['data'];
@@ -20,7 +20,7 @@
     	}
 
     	this.actualizarTipoBici = function(tipoBici) {
-        	return $http.put('https://bf42.herokuapp.com/api/tiposBicicleta/' + tipoBici.id + "/", tipoBici).then(
+        	return $http.put('https://bf43.herokuapp.com/api/tiposBicicleta/' + tipoBici.id + "/", tipoBici).then(
         			function(response) {
         				console.log(response);
         				return response['data'];
@@ -28,7 +28,7 @@
     	}
 
         this.eliminarTipoBici = function(tipoBici) {
-            return $http.delete('https://bf42.herokuapp.com/api/tiposBicicleta/' + tipoBici.id + "/").then(
+            return $http.delete('https://bf43.herokuapp.com/api/tiposBicicleta/' + tipoBici.id + "/").then(
                     function(response) {
                         console.log(response);
                         return response['data'];

@@ -17,6 +17,12 @@
 		'REVIEWS': '/reviews',
 		'RETORNOS': '/retornos',
 		'REPORTE': '/reporteUsuario',
+		'REPORTE_ADMIN': '/reporteAdmin',
+		'SOLICITUDES': '/solicitudesMantenimiento',
+		'BUSQUEDA_MULTAS': '/multasBusqueda', 
+		'MIS_MULTAS': '/misMultas', 
+		'CONSOLIDACION': '/consolidadoPuntos',
+		'BONOSYPENALIDADES': '/bonosYPenalidades'
     });
 
 })(window.angular);

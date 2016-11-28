@@ -50,6 +50,11 @@
                                         this.refrescarUsuarios();
                                     }.bind(this));
                             }.bind(this));
+                    } else {
+                        svc.nuevoUsuario(usuario).then(
+                            function(data) {
+                                this.refrescarUsuarios();
+                            }.bind(this));
                     }
                     
                 } else {

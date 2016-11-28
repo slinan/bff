@@ -12,7 +12,8 @@
 		<tr>
 			<th>Id</th>
 			<th>Tipo</th>
-			<th>Punto Prestamo</th>
+			<th>Punto Préstamo/Prestada</th>
+			<th>Disponibilidad (en mantenimiento)</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +21,7 @@
 			<td>{{b.id}}</td>
 			<td>{{ctrl.tiposBici[b.tipo].nombre || b.tipo}}</td>
 			<td>{{ctrl.puntosPrestamo[b.puntoPrestamo].nombre || b.puntoPrestamo || 'Prestada'}}</td>
+			<td>{{ctrl.getDisponible(b.disponible)}}</td>
 			<td align="center">
 				<button type="button" class="btn btn-success"
 					ng-click="ctrl.abrirItem(b, ctrl.tiposBici, ctrl.puntosPrestamo)">

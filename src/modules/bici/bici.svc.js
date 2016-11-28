@@ -4,7 +4,7 @@
     mod.service('bicisService', function($http){
 
     	this.getBicis = function() {
-        	return $http.get('https://bf42.herokuapp.com/api/bicicletas/').then(
+        	return $http.get('https://bf43.herokuapp.com/api/bicicletas/').then(
         			function(response) {
         				console.log(response);
         				return response['data'];
@@ -12,7 +12,7 @@
     	};
 
     	this.crearBici = function(bici) {
-        	return $http.post('https://bf42.herokuapp.com/api/bicicletas/', bici).then(
+        	return $http.post('https://bf43.herokuapp.com/api/bicicletas/', bici).then(
         			function(response) {
         				console.log(response);
         				return response['data'];
@@ -20,7 +20,7 @@
     	}
 
     	this.actualizarBici = function(bici) {
-        	return $http.put('https://bf42.herokuapp.com/api/bicicletas/' + bici.id + "/", bici).then(
+        	return $http.put('https://bf43.herokuapp.com/api/bicicletas/' + bici.id + "/", bici).then(
         			function(response) {
         				console.log(response);
         				return response['data'];
@@ -28,7 +28,7 @@
     	}
 
         this.eliminarBici = function(bici) {
-            return $http.delete('https://bf42.herokuapp.com/api/bicicletas/' + bici.id + "/").then(
+            return $http.delete('https://bf43.herokuapp.com/api/bicicletas/' + bici.id + "/").then(
                     function(response) {
                         console.log(response);
                         return response['data'];
@@ -36,7 +36,7 @@
         }
 
         this.getBici = function(idBici) {
-            return $http.get('https://bf42.herokuapp.com/api/bicicletas/' + idBici + '/')
+            return $http.get('https://bf43.herokuapp.com/api/bicicletas/' + idBici + '/')
                 .success(
                     function(response) {
                         return response['data'];
@@ -48,7 +48,7 @@
         }
 
         this.quitarPuntoPrestamoBici = function(idBici) {
-            return $http.get('https://bf42.herokuapp.com/api/bicicletas/' + idBici + '/').then(
+            return $http.get('https://bf43.herokuapp.com/api/bicicletas/' + idBici + '/').then(
                 function(response) {
                     var bici = response['data'];
                     bici.puntoPrestamo = null;
@@ -57,7 +57,7 @@
         }
 
         this.asignarPuntoPrestamoBici = function(idBici, idPuntoPrestamo) {
-            return $http.get('https://bf42.herokuapp.com/api/bicicletas/' + idBici + '/').then(
+            return $http.get('https://bf43.herokuapp.com/api/bicicletas/' + idBici + '/').then(
                 function(response) {
                     var bici = response['data'];
                     bici.puntoPrestamo = idPuntoPrestamo;

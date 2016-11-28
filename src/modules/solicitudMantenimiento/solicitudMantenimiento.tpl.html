@@ -1,0 +1,33 @@
+<div class="bikes-form">
+	<h4 class="title">Solicitudes de Mantenimiento</h4>
+	<button type="button" class="btn btn-success navbar-btn" ng-click="ctrl.nuevoTipoBici()"> 
+	   <span class="glyphicon glyphicon-plus" aria-hidden="true">
+	   </span> 
+	</button>
+</div>
+</br>
+<table class="table table-striped table-hover"
+	ng-show="ctrl.solicitudes.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Id Bicicleta</th>
+			<th>Descripción</th>
+			<th>Fecha</th>
+			<th>Mantenimiento</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="s in ctrl.solicitudes">
+			<td>{{s.id}}</td>
+			<td>{{s.bicicleta}}</td>
+			<td>{{s.descripcion}}</td>
+			<td>{{s.fecha}}</td>
+			<td>{{ctrl.enMantenimiento(s.mantenimiento)}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="big-message" ng-show="!ctrl.solicitudes.length">
+	<h3>No hay solicitudes de mantenimiento en el momento.</h3>
+</div>

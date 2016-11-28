@@ -4,7 +4,7 @@
     mod.service('retornosService', function($http){
 
         this.getPrestamosSinRetorno = function() {
-            return $http.get('https://bf42.herokuapp.com/api/prestamosSinRetorno/').then(
+            return $http.get('https://bf43.herokuapp.com/api/prestamosSinRetorno/').then(
                     function(response) {
                         console.log(response);
                         return response['data'];
@@ -12,7 +12,7 @@
         }
 
         this.crearRetorno = function(retorno) {
-            return $http.post('https://bf42.herokuapp.com/api/retornar/', retorno).then(
+            return $http.post('https://bf43.herokuapp.com/api/retornar/', retorno).then(
                     function(response) {
                         console.log(response);
                         return response['data'];
@@ -21,7 +21,7 @@
 
         this.asociarRetornoAPrestamo = function(idRetorno, prestamo) {
             prestamo.retorno = idRetorno;
-            return $http.put('https://bf42.herokuapp.com/api/prestamos/' + prestamo.id + '/', prestamo).then(
+            return $http.put('https://bf43.herokuapp.com/api/prestamos/' + prestamo.id + '/', prestamo).then(
                     function(response) {
                         console.log(response);
                         return response['data'];

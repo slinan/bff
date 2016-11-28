@@ -3,23 +3,30 @@
     var mainApp = ng.module('mainApp', [
         'authModule',
         'bicisModule',
+        'bonosYPenalidadesModule',
         'confirmacionModule',
+        'consolidadoPuntosModule',
         'cookiesModule',
         'errorsModule',
         'multasModule',
+        'multasBusquedaModule',
         'ngRoute',
         'prestamosModule',
         'puntosPrestamoModule',
         'redireccionModule',
+        'registroPuntosModule',
         'registroModule',
         'reservasModule',
         'retornosModule',
         'reviewModule',
+        'solicitudMantenimientoModule',
         'tiposBiciModule',
         'usuariosModule',
         'reporteUsuarioModule',
+        'reporteAdminModule',
         'ui.bootstrap',
-        'ngCrud'
+        'ngCrud',
+        'ngMap'
     ]);
     
     var commonRoot = 'src/modules/';
@@ -30,6 +37,8 @@
     	$routeProvider
                 .when('/home', {
                     templateUrl: commonRoot + 'home/home.tpl.html',
+                    controller: 'authCtrl',
+                    controllerAs: ctrlAlias
                 })
                 .when('/tiposBici', {
                     templateUrl: commonRoot + 'tiposbici/tiposBici.tpl.html',
@@ -94,6 +103,36 @@
                 .when('/reporteUsuario', {
                     templateUrl: commonRoot + 'reporteUsuario/reporteUsuario.tpl.html',
                     controller: 'reporteUsuarioCtrl',
+                    controllerAs: ctrlAlias
+                })
+                .when('/reporteAdmin', {
+                    templateUrl: commonRoot + 'reporteAdmin/reporteAdmin.tpl.html',
+                    controller: 'reporteAdminCtrl',
+                    controllerAs: ctrlAlias
+                })
+                .when('/solicitudesMantenimiento', {
+                    templateUrl: commonRoot + 'solicitudMantenimiento/solicitudMantenimiento.tpl.html',
+                    controller: 'solicitudMantenimientoCtrl',
+                    controllerAs: ctrlAlias
+                })
+                .when('/multasBusqueda', {
+                    templateUrl: commonRoot + 'multasBusqueda/multasBusqueda.tpl.html',
+                    controller: 'multasBusquedaCtrl',
+                    controllerAs: ctrlAlias
+                })
+                .when('/misMultas', {
+                    templateUrl: commonRoot + 'multasBusqueda/multasBusqueda-usuario.tpl.html',
+                    controller: 'multasBusquedaUsuarioCtrl',
+                    controllerAs: ctrlAlias
+                })
+                .when('/consolidadoPuntos', {
+                    templateUrl: commonRoot + 'consolidadoPuntos/consolidadoPuntos.tpl.html',
+                    controller: 'consolidadoPuntosCtrl',
+                    controllerAs: ctrlAlias
+                })
+                .when('/bonosYPenalidades', {
+                    templateUrl: commonRoot + 'bonosYPenalidades/bonosYPenalidades.tpl.html',
+                    controller: 'bonosYPenalidadesCtrl',
                     controllerAs: ctrlAlias
                 })
                 .otherwise({

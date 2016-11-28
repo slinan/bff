@@ -65,6 +65,14 @@
             }.bind(this));
         };
 
+        this.getEstado = function(retorno) {
+            if(!!retorno) {
+                return "Retornada";
+            } else {
+                return "En préstamo";
+            }
+        };
+
         this.prestamos = [];
         this.puntosPrestamo = {};
         this.usuarios = {};

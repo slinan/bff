@@ -17,13 +17,11 @@
 
             //Map angular-ui modal custom defaults to modal defaults defined in service
             angular.extend(tempModalDefaults, this.modalDefaults, customModalDefaults);
-            console.log("Papaya")
             console.log(tempModalDefaults)
             console.log(this.modalDefaults)
             console.log(customModalDefaults)
             //Map modal.html $scope custom properties to defaults defined in service
             angular.extend(tempModalOptions, this.modalOptions, customModalOptions);
-            console.log("Papaya")
             console.log(tempModalOptions)
             console.log(this.modalOptions)
             console.log(customModalOptions)

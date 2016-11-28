@@ -19,13 +19,13 @@
                     <label for="usuario"> Usuario: </label><br>
                     <input class="form-control" placeholder="Usuario autorizado"
                         ng-model="ctrl.usuario" name="usuario"
-                        maxlength="30" required disabled>
+                        maxlength="50" required disabled>
                 </div>
                 <div class="form-group"
                     <label for="usuarioAutorizado"> Usuario para retorno: </label><br>
                     <input class="form-control" placeholder="Usuario autorizado"
                         ng-model="ctrl.usuarioAutorizado" name="usuarioAutorizado"
-                        maxlength="30" required disabled>
+                        maxlength="50" required disabled>
                 </div>
                 <div class="form-group"
                     <label for="usuarioAutorizado"> Fecha: </label><br>
@@ -55,7 +55,15 @@
                     <label>
                         <input type="checkbox" name="selectedTipos" 
                             ng-model="tipoMulta.selected"> 
-                            {{tipoMulta.tipo + '(' + tipoMulta.monto + ')'}}
+                            {{tipoMulta.tipo + ' (' + tipoMulta.monto + ')'}}
+                    </label>
+                </div>
+                <label> Puntos: </label><br>
+                <div class="checkbox" ng-repeat="tipoPunto in ctrl.tiposPuntos">
+                    <label>
+                        <input type="checkbox" name="selectedTiposPuntos" 
+                            ng-model="tipoPunto.selected"> 
+                            {{tipoPunto.razon + ' (' + tipoPunto.puntos + ')'}}
                     </label>
                 </div>
             </div>          

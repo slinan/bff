@@ -1,0 +1,51 @@
+<div class="bikes-form">
+	<h4 class="title">Bonos</h4>
+</div>
+</br>
+<table class="table table-striped table-hover"
+	ng-show="ctrl.bonos.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Fecha</th>
+			<th>Monto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="t in ctrl.bonos">
+			<td>{{t.id}}</td>
+			<td>{{t.fecha}}</td>
+			<td>{{t.monto}}</td>
+		</tr>
+	</tbody>
+</table>
+<div class="big-message" ng-show="!ctrl.bonos.length">
+	<h3>No tiene ningún bono.</h3>
+</div>
+
+<div class="bikes-form">
+	<h4 class="title">Penalidades</h4>
+</div>
+</br>
+<table class="table table-striped table-hover"
+	ng-show="ctrl.penalidades.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Fecha</th>
+			<th>Monto</th>
+			<th>Descripción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="p in ctrl.penalidades">
+			<td>{{p.id}}</td>
+			<td>{{p.fecha}}</td>
+			<td>{{p.monto}}</td>
+			<td>{{p.descripcion}}</td>
+		</tr>
+	</tbody>
+</table>
+<div class="big-message" ng-show="!ctrl.penalidades.length">
+	<h3>No tiene ninguna penalidad.</h3>
+</div>

@@ -25,7 +25,13 @@
                     	ng-options="option.id as option.nombre for option in ctrl.puntosPrestamo"
                     	required>
                     </select> 
-            </div>               
+            </div> 
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="selectedTipos" ng-model="ctrl.bici.disponible"> 
+                        Disponible
+                </label>
+            </div>
 			<button type="button" class="btn btn-success"
 				ng-click="ctrl.guardar(form.$valid, form.$error)">Guardar
 			</button>

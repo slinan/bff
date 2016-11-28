@@ -27,9 +27,9 @@
                     resolve: {
                             puntoPrestamo: function() {
                                 if (!!data){
-                                    return {id: puntoPrestamo.id, nombre: puntoPrestamo.nombre, direccion: puntoPrestamo.direccion, tiposBicis: data};
+                                    return {id: puntoPrestamo.id, nombre: puntoPrestamo.nombre, direccion: puntoPrestamo.direccion, tiposBicis: data, latitud: puntoPrestamo.latitud, longitud: puntoPrestamo.longitud};
                                 } else {
-                                    return {id: puntoPrestamo.id, nombre: puntoPrestamo.nombre, direccion: puntoPrestamo.direccion};
+                                    return {id: puntoPrestamo.id, nombre: puntoPrestamo.nombre, direccion: puntoPrestamo.direccion, latitud: puntoPrestamo.latitud, longitud: puntoPrestamo.longitud};
                                 }
                             }
                     }   

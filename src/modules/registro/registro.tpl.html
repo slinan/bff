@@ -9,22 +9,22 @@
                 <div class="panel-body">
                     <form name="loginform" accept-charset="UTF-8" role="form">
                         <div class="form-group">
-                            <input class="form-control" required ng-model="ctrl.usuario.username" placeholder="Username" name="username" maxlength="30" required>
+                            <input class="form-control" required ng-model="ctrl.usuario.username" placeholder="Username" name="username" maxlength="50" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" required ng-model="ctrl.usuario.first_name" placeholder="Nombre" name="first_name" maxlength="30" required>
+                            <input class="form-control" required ng-model="ctrl.usuario.first_name" placeholder="Nombre" name="first_name" maxlength="50" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" required ng-model="ctrl.usuario.last_name" placeholder="Apellido" name="last_name" maxlength="30" required>
+                            <input class="form-control" required ng-model="ctrl.usuario.last_name" placeholder="Apellido" name="last_name" maxlength="50" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" required ng-model="ctrl.usuario.email" placeholder="Correo Electr&#243nico" name="email" type="email" maxlength="30" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required>
+                            <input class="form-control" required ng-model="ctrl.usuario.email" placeholder="Correo Electr&#243nico" name="email" type="email" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" required ng-model="ctrl.usuario.password" placeholder="Contrase&#241a" name="contrasenia" type="password" maxlength="30" required>
+                            <input class="form-control" required ng-model="ctrl.usuario.password" placeholder="Contrase&#241a" name="contrasenia" type="password" maxlength="50" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" required ng-model="ctrl.confirmacion.password" placeholder="Confirmación contrase&#241a" name="confirmacionpassword" type="password" maxlength="30" required>
+                            <input class="form-control" required ng-model="ctrl.confirmacion.password" placeholder="Confirmación contrase&#241a" name="confirmacionpassword" type="password" maxlength="50" required>
                         </div>
                         <input class="btn btn-lg btn-success btn-block" ng-click="ctrl.crearUsuario(loginform.$valid)" type="submit" value="Registrarse">
                     </form>

@@ -11,6 +11,7 @@
 			<th>Usuario Retorno</th>
 			<th>Fecha y Hora</th>
 			<th>Punto Inicial</th>
+			<th>Estado</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +21,7 @@
 			<td>{{ctrl.usuarios[p.usuarioAutorizado].username || p.usuarioAutorizado}}</td>
 			<td>{{p.fecha | date:"dd/MM/yyyy h:mma"}}</td>
 			<td>{{ctrl.puntosPrestamo[p.punto].nombre || p.punto}}</td>
+			<td>{{ctrl.getEstado(p.retorno)}}</td>
 			<td align="center">
 				<button type="button" class="btn btn-success"
 					ng-click="ctrl.abrirItem(p, ctrl.usuarios, ctrl.puntosPrestamo)"

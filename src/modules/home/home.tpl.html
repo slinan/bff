@@ -1,6 +1,14 @@
 <div id="boxGrid">
-	<div class="big-message">
-		<h3>El mejor lugar para rentar una bicicleta.</h3>
+	<div class="big-message" ng-show="!ctrl.autenticado()">
+		<h1>Video Tutoriales:</h1>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLa-nOLJ3TxHr5HAItIuNUp32c9_89QQX4" frameborder="0" allowfullscreen></iframe>
+        <h1>Manual de Usuario:</h1>
+      <iframe src='https://onedrive.live.com/embed?cid=EB817CABFF70CF3E&resid=EB817CABFF70CF3E%21878&authkey=AJ0yhNAtVgfihNA&em=2&wdAr=1.7777777777777777' width='962px' height='565px' frameborder='0'>Esto es un documento de <a target='_blank' href='https://office.com'>Microsoft Office</a> incrustado con tecnología de <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
+        
+	</div>
+	<div class="big-message" ng-show="ctrl.autenticado()">
+		<h3>¡Bienvenido!</h3>
+        
 	</div>
 </div>
 

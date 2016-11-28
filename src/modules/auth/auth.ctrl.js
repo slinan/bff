@@ -93,6 +93,10 @@
             redirect.aReporte();
         }
 
+        this.irAReporteAdmin = function() {
+            redirect.aReporteAdmin();
+        }
+
         this.irABicis = function() {
             redirect.aBicis();
         }
@@ -103,6 +107,26 @@
 
         this.irARetornos = function() {
             redirect.aRetornos();
+        }
+
+        this.irASolicitudes = function() {
+            redirect.aSolicitudes();
+        }
+
+        this.irABusquedaMultas = function() {
+            redirect.aBusquedaMultas();
+        }
+
+        this.irAMisMultas = function() {
+            redirect.aMisMultas();
+        }
+
+        this.irAConsolidacion = function() {
+            redirect.aConsolidacion();
+        }
+
+        this.irABonosYPenalidades = function() {
+            redirect.aBonosYPenalidades();
         }
 
         this.usuario = {

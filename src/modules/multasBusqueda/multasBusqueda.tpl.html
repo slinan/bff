@@ -1,0 +1,54 @@
+<div class="bikes-form">
+	<h4 class="title">Búsqueda de Multas</h4>
+</div>
+<div class="filters-bar panel panel-default">
+	<div class="panel-body">
+		<div class="form-group group-inline">
+    		<label for="busqueda">Búsqueda por:</label>
+    		<select class="form-control" name="singleSelect" id="puntos" ng-model="ctrl.buscarPor" ng-options="b for b in ctrl.opcionesBusqueda">
+            </select> 
+  		</div>
+  		<div class="form-group group-inline" ng-show="ctrl.buscarPor == 'Punto de préstamo' && ctrl.puntosPrestamo.length > 0">
+    		<label for="elementos">Punto a buscar:</label>
+    		<select class="form-control" name="singleSelect" id="tipos" ng-model="ctrl.puntoABuscar" ng-options="b.nombre for b in ctrl.puntosPrestamo">
+            </select> 
+  		</div>
+  		<div class="form-group group-inline" ng-show="ctrl.buscarPor == 'Usuario' && ctrl.usuarios.length > 0">
+    		<label for="elementos">Usuario a buscar:</label>
+    		<select class="form-control" name="singleSelect" id="tipos" ng-model="ctrl.usuarioABuscar" ng-options="b.username for b in ctrl.usuarios">
+            </select> 
+  		</div>
+  		<div class="form-group group-inline" ng-show="ctrl.buscarPor == 'Punto de préstamo' && !ctrl.puntosPrestamo.length">
+			<h3>No hay puntos de préstamo en el momento.</h3>
+  		</div>
+  		<div class="form-group group-inline" ng-show="ctrl.buscarPor == 'Usuario' && !ctrl.usuarios.length">
+			<h3>No hay usuarios en el momento.</h3>
+  		</div>
+  		<button ng-click="ctrl.buscar()" class="btn btn-success" ng-show="ctrl.buscarPor == 'Punto de préstamo' && ctrl.puntosPrestamo.length > 0">Buscar Multas Punto de Préstamo</button>
+  		<button ng-click="ctrl.buscar()" class="btn btn-success" ng-show="ctrl.buscarPor == 'Usuario' && ctrl.usuarios.length > 0">Buscar Multas Usuario</button>
+	</div>
+</div>
+
+<table class="table table-striped table-hover"
+	ng-show="ctrl.multas.length > 0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Fecha</th>
+			<th>Tipo de Infracción</th>
+			<th>Usuario</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="m in ctrl.multas">
+			<td>{{m.id}}</td>
+			<td>{{m.fecha | date:"dd/MM/yyyy h:mma"}}</td>
+			<td>{{ctrl.getTipoInfraccion(m.tipoDeInfraccion)}}</td>
+			<td>{{ctrl.getUsuario(m.usuario)}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="big-message" ng-show="!ctrl.multas.length">
+	<h3>No hay multas para la búsqueda.</h3>
+</div>
