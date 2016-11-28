@@ -28,7 +28,7 @@
 </div>
 
 <div ng-show="ctrl.puntosPrestamo.length > 0">
-  <map style="display: block; width: 100%; height: 200px;" zoom="12" center="current-location">
+  <map style="display: block; width: 100%; height: 200px;" zoom="11" center="4.602967, -74.25276">
     <marker ng-repeat="p in ctrl.puntosPrestamo"
       	position="{{p.latitud}}, {{p.longitud}}"
       	label="{{p.nombre}}"
