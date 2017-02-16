@@ -1,9 +1,0 @@
-<div ng-show="error.status" ng-message="show">
-	<div class="alert alert-{{error.tipo}}" role="alert">
-      	<button type="button" class="close" ng-click="error.status = false" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-       	<strong>{{error.encabezado| uppercase}}:</strong>
-       		<a style="color: black;" ng-hide="!error.link" href="#{{error.link}}">{{error.mensaje}}</a>
-       		<p ng-show="!error.link">{{error.mensaje}}</p>
-    </div>
-</div>
-
